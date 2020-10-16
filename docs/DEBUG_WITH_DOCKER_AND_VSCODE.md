@@ -6,7 +6,7 @@
 to ```CMD python -m ptvsd --host 0.0.0.0 --port 5678 --wait --multiprocess -m flask run -h 0.0.0.0 -p 5000```
 4. Comment the lines ```ENTRYPOINT ["/anyway/docker-entrypoint.sh"]``` and ```CMD FLASK_APP=anyway flask run --host 0.0.0.0 ```
 
-5. in launch.json add the following code:
+5. in launch.json add the following code: 
 
   ```
   {
