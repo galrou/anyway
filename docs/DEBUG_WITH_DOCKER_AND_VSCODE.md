@@ -28,6 +28,26 @@ to ```CMD python -m ptvsd --host 0.0.0.0 --port 5678 --wait --multiprocess -m fl
             "host": "127.0.0.1"
         }
   ```
- 
- #### Note: everytime you change something in dockerfile you have to rebuild the docker using the command:
- `sudo docker-compose build`
+6. in the docker-compse-yml file you will the the following code:
+```
+services:
+  anyway:
+    build: .
+    image: anywayteam/anyway:latest
+    container_name: anyway
+    ports:
+      - "8080:5000"
+    environment:
+      - DATABASE_URL=postgresql://anyway:anyway@db/anyway
+      - FLASK_ENV=development
+    volumes:
+      - .:/anyway
+    restart: always
+    depends_on:
+      - db
+```
+comment the line `image: anywayteam/anyway:latest` and the line `FLASK_ENV=development`
+
+
+#### Note: Everytime you change any file related to the docker you have to rebuild the docker using the command
+`sudo docker-compose build`
